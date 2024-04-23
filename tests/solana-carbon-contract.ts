@@ -12,92 +12,92 @@ async function getBalance(publicKey: PublicKey, provider: anchor.AnchorProvider)
 describe('Solana Carbon Contract', () => {
 	anchor.setProvider(anchor.AnchorProvider.env());
 
-//   it('Should update the config', async () => {
+  it('Should update the config', async () => {
 
-//     const provider = anchor.AnchorProvider.env();
-//     anchor.setProvider(provider);   
+    const provider = anchor.AnchorProvider.env();
+    anchor.setProvider(provider);   
 
-//     const program = anchor.workspace.SolanaCarbonContract;
-//     const payer = program.provider.wallet.payer;
+    const program = anchor.workspace.SolanaCarbonContract;
+    const payer = program.provider.wallet.payer;
 
-//     // Initialize the config account
-//     const configKeypair = Keypair.generate();
-//     const [configPda, configBump] = await PublicKey.findProgramAddress(
-//       [Buffer.from(anchor.utils.bytes.utf8.encode("CARBON_CONFIG"))],
-//       program.programId
-//     );
+    // Initialize the config account
+    const configKeypair = Keypair.generate();
+    const [configPda, configBump] = await PublicKey.findProgramAddress(
+      [Buffer.from(anchor.utils.bytes.utf8.encode("CARBON_CONFIG"))],
+      program.programId
+    );
 
-//     // console.log("payer isss: ", payer.publicKey)
-//     // console.log("configPda is :", configPda)
-//     // console.log(program.programId)
-//     // console.log(SystemProgram.programId)
+    // console.log("payer isss: ", payer.publicKey)
+    // console.log("configPda is :", configPda)
+    // console.log(program.programId)
+    // console.log(SystemProgram.programId)
 
-//     // Example user_id as a 32-byte array
-//     const userId = new anchor.web3.PublicKey(payer.publicKey).toBytes();
-//     const tx = await program.rpc.initConfig(
-//       {
-//         userId, // Pass the user_id as part of the instruction data
-//       },{
-//       accounts: {
-//         authority: payer.publicKey,
-//         config: configPda,
-//         systemProgram: SystemProgram.programId,
-//         rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-//       },
-//       signers: [payer],
-//     });
+    // Example user_id as a 32-byte array
+    const userId = new anchor.web3.PublicKey(payer.publicKey).toBytes();
+    const tx = await program.rpc.initConfig(
+      {
+        userId, // Pass the user_id as part of the instruction data
+      },{
+      accounts: {
+        authority: payer.publicKey,
+        config: configPda,
+        systemProgram: SystemProgram.programId,
+        rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+      },
+      signers: [payer],
+    });
 
-//     // Confirm the transaction.
-//     await program.provider.connection.confirmTransaction(tx, 'confirmed');
+    // Confirm the transaction.
+    await program.provider.connection.confirmTransaction(tx, 'confirmed');
 
-//     // New authority
-//     const newAuthority = Keypair.generate();
-//     console.log(newAuthority.publicKey)
+    // New authority
+    const newAuthority = Keypair.generate();
+    console.log(newAuthority.publicKey)
 
-//     // Check the signer's balance before withdrawal
-//     const initialSignerBalance = await getBalance(newAuthority.publicKey, provider);
-//     console.log("Initial newAuthority Balance:", initialSignerBalance);
+    // Check the signer's balance before withdrawal
+    const initialSignerBalance = await getBalance(newAuthority.publicKey, provider);
+    console.log("Initial newAuthority Balance:", initialSignerBalance);
 
-//     // Send SOL to delegate_pda
-//     const lamportsToSend = 1000000; // Number of lamports to send (1 SOL = 1,000,000 lamports)
-//     const transferTx = new anchor.web3.Transaction().add(
-//       anchor.web3.SystemProgram.transfer({
-//         fromPubkey: payer.publicKey,
-//         toPubkey: newAuthority.publicKey,
-//         lamports: lamportsToSend,
-//       })
-//     );
-//     // Sign and send the transaction
-//     await provider.sendAndConfirm(transferTx, [payer]);
+    // Send SOL to delegate_pda
+    const lamportsToSend = 1000000; // Number of lamports to send (1 SOL = 1,000,000 lamports)
+    const transferTx = new anchor.web3.Transaction().add(
+      anchor.web3.SystemProgram.transfer({
+        fromPubkey: payer.publicKey,
+        toPubkey: newAuthority.publicKey,
+        lamports: lamportsToSend,
+      })
+    );
+    // Sign and send the transaction
+    await provider.sendAndConfirm(transferTx, [payer]);
 
-//       // Check the signer's balance before withdrawal
-//       const afterSignerBalance = await getBalance(newAuthority.publicKey, provider);
-//       console.log("AfterPay newAuthority Balance:", afterSignerBalance);
+      // Check the signer's balance before withdrawal
+      const afterSignerBalance = await getBalance(newAuthority.publicKey, provider);
+      console.log("AfterPay newAuthority Balance:", afterSignerBalance);
 
-//     // Update the config
-//     const updateTx = await program.rpc.updateConfig(      {
-//       userId, // Pass the user_id as part of the instruction data
-//       },{
-//       accounts: {
-//         authority: payer.publicKey,
-//         newAuthority: newAuthority.publicKey,
-//         config: configPda,
-//         systemProgram: SystemProgram.programId,
-//         rent: anchor.web3.SYSVAR_RENT_PUBKEY,
-//       },
-//       signers: [payer, newAuthority],
-//     });
+    // Update the config
+    const updateTx = await program.rpc.updateConfig(      {
+      userId, // Pass the user_id as part of the instruction data
+      },{
+      accounts: {
+        authority: payer.publicKey,
+        newAuthority: newAuthority.publicKey,
+        config: configPda,
+        systemProgram: SystemProgram.programId,
+        rent: anchor.web3.SYSVAR_RENT_PUBKEY,
+      },
+      signers: [payer, newAuthority],
+    });
 
-//     await program.provider.connection.confirmTransaction(updateTx, 'confirmed');
+    await program.provider.connection.confirmTransaction(updateTx, 'confirmed');
 
-//     // // Fetch the updated config account
-//     const updatedConfig = await program.account.config.fetch(configPda);
+    // // Fetch the updated config account
+    const updatedConfig = await program.account.config.fetch(configPda);
 
-//     // Assert the new authority
-//     assert.equal(updatedConfig.authority.toString(), newAuthority.publicKey.toString());
+    // Assert the new authority
+    assert.equal(updatedConfig.authority.toString(), newAuthority.publicKey.toString());
 
-//   });
-//   });
+  });
+  });
 
 
 // it('Should send SOL to the delegate_pda and withdraw', async () => {
@@ -498,11 +498,4 @@ it('Should not withdraw the money to a revoked account', async () => {
 				throw error;
 			}
 	}
-})
-
-
-
-
-
-
 })
