@@ -11,9 +11,9 @@ At Tres Cool, we aim to revolutionize climate action and make it accessible, enj
 **How It Works:**
 SPL-Cool is made to cool through a deployed smart contract on the Solana blockchain. By setting the royalty of your NFT to the designated SPL-Cool PDA (Program Derived Address) created by our delegate smart contract, funds flow through this account. As funds accumulate, they are directed to purchase high-quality, permanent carbon removal credits. The carbon is removed from our atmosphere and retired upon maturity. The removal impact is tokenized as Cool Factor (FKTR), where 1 FKTR = 1 KG of Carbon Removed. FKTR is made redeemable to the token holder to act as a feedback loop, allowing for individual impact tracking down to the gram, and to introduce a new form of internet status, backed by positive impact.
 
-PDA address = dWmRfg2W595wBKxr6h5jnXNGahFiiSaHVSQXj4q2P9o
+SPL-Cool PDA address = dWmRfg2W595wBKxr6h5jnXNGahFiiSaHVSQXj4q2P9o
 
-
+![Removal v Offset](https://github.com/Tres-cool/tres-cool-solana-contracts/blob/main/assets/spl-cool-illus.jpg)
 
 **This is not offsetting:**
 SPL-Cool is a tool for real, permanent carbon removal, not a shortcut to carbon neutrality. While the best solution to planet-warming is not emitting carbon. The next best thing is to take action and remove the carbon that we do emit. And we mean remove. Not offset.
