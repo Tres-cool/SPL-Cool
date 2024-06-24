@@ -23,12 +23,12 @@ SPL-Cool is a tool for real, permanent carbon removal, not a shortcut to carbon 
 The SPL-Cool is not designed as a race to buy as many carbon credits as possible to fulfill carbon offsetting claims. The SPL-Cool is designed to remove carbon permanently, while providing early funding to scale tech-based carbon removal solutions. The SPL-Cool is a push for beyond status quo, beyond offsetting - to spark a carbon removal revolution, change the way we act and make sure the world has the solutions needed to cool our planet.
 
 **Join us on-piste:**
-Discover more about SPL-Cool at erc-cool.org. Continually evolving with best practices, ERC-Cool aims to proliferate carbon removal and create the kind of climate action everyone wants to be a part of. Feel free to reach out with any questions.
+Discover more about SPL-Cool at erc-cool.org. Continually evolving with best practices, ERC-Cool and SPL-Cool aim to proliferate carbon removal and create the kind of climate action everyone wants to be a part of. Feel free to reach out with any questions.
 
 **License:**
 We want that ability available to all without permission, this is an open source project, released under the MIT License.
 
 **Disclaimer:**
-Tres Cool is not liable for any outcomes from using ERC-Cool. Always DYOR. We're here to innovate, not litigate!
+Tres Cool is not liable for any outcomes from using ERC-Cool and SPL-Cool. Always DYOR. We're here to innovate, not litigate!
 
-**ERC-Cool is more than code; it's cool. Implementing it into your project says a lot about you.**
+**SPL-Cool is more than code; it's cool. Implementing it into your project says a lot about you.**
